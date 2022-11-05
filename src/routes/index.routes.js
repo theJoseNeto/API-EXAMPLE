@@ -1,19 +1,19 @@
 const { Router } = require("express");
+const AddressController = require("../controllers/AddressController");
+const UserController = require("../controllers/UserController");
+const TechController = require("../controllers/TechController");
+const ReportController = require("../controllers/ReportController");
 const routes = Router();
-
-const { index: listUsers, store: storeUser } = require('../controllers/userController');
-const { index: listAddresses, store: storeAddress } = require('../controllers/addressController');
-const {store: storeTech, index : lisTechs} = require('../controllers/techController');
-
 routes.get('/', (req, res) => res.json({ hello: "world!" }));
 
-routes.post('/users', storeUser);
-routes.get('/users', listUsers);
+routes.get('/users', UserController.index); 
+routes.post("/users", UserController.store); 
 
-routes.post("users/:user_id/addresses", storeAddress);
-routes.get('users/:user_id/addresses', listAddresses);
+routes.get('/:user_id/addresses', AddressController.index);
+routes.post('/:user_id/addresses', AddressController.store);
 
-routes.get('/users/:user_id/techs', lisTechs);
-routes.post('/users/:user_id/techs', storeTech); 
+routes.get('/:user_id/techs', TechController.index);
+routes.post('/:user_id/techs', TechController.store)
 
+routes.get("/report", ReportController.show);
 module.exports = routes;

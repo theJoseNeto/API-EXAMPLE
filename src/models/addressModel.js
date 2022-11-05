@@ -1,16 +1,16 @@
-const {DataTypes, Model} = require("sequelize"); 
+const {DataTypes, Model} = require("sequelize");
 
-class Address extends Model {
+class Address extends Model{ 
     static init(sequelize){
         super.init({
-            zipcode: DataTypes.STRING, 
             street: DataTypes.STRING, 
+            zipcode: DataTypes.STRING, 
             number: DataTypes.INTEGER,
-        }, {sequelize})
+        },{sequelize}); 
     }
 
-    static associate(models){
-        this.belongsTo(models.Users, {foreignKey: 'user_id', as: 'user'});
+    static associate(model){
+        this.belongsTo(model.User, {foreignKey: "user_id", as: "addresses"});
     }
 }
 
