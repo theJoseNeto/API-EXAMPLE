@@ -54,7 +54,7 @@ GET: http://localhost:3000/:user_id/addresses
 
 <br/>
 
-## Armazenando usuários:
+## Armazenando endereços associados a um usuário:
 
 POST: http://localhost:3000/:user_id/addresses
 
